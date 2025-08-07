@@ -59,3 +59,11 @@ WHERE ReceiptID = 3;
 SELECT ProductID, ProductName, UnitPrice
 FROM Products
 WHERE CategoryID IN (2, 4);
+--หรือ อีกแบบ union
+select productID, ProductName,UnitPrice
+from Products
+where CategoryID=2
+union
+select productID, ProductName,UnitPrice
+from Products
+where CategoryID=4
