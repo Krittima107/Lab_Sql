@@ -17,7 +17,7 @@ SELECT ProductID, ProductName, UnitPrice
 FROM Products
 WHERE UnitPrice > 100;
 -- 5. รหัสสินค้า และราคาของยางลบ
-SELECT  ProductName, ProductID, UnitPrice
+SELECT ProductID, UnitPrice
 FROM Products
 WHERE ProductName = 'ยางลบ';
 -- 6. หมายเลขใบเสร็จ วันที่ และ ราคารวม ของใบเสร็จที่ออกก่อนวันที่ 15 ก.พ.
@@ -33,19 +33,19 @@ SELECT ProductID, ProductName, UnitPrice, UnitsInStock
 FROM Products
 WHERE ProductName IN ('แชมพู', 'แป้งเด็ก', 'ดินสอ', 'ยางลบ');
 -- 9. รายละเอียดของสินค้าประเภทเครื่องเขียน
-SELECT productID, ProductName,UnitPrice,UnitsInStock,CategoryID,Discontinued
-FROM Products
-WHERE CategoryID = 1;
--- 10. รหัสประเภทสินค้า ชื่อประเภท และรายละเอียดของ สินค้าประเภทเครื่องสำอาง
-SELECT CategoryID, CategoryName, Description
+SELECT [Description]
 FROM Categories
-WHERE CategoryName = 'เครื่องสำอาง';
+WHERE CategoryName='เครื่องเขียน';
+-- 10. รหัสประเภทสินค้า ชื่อประเภท และรายละเอียดของ สินค้าประเภทเครื่องสำอาง
+SELECT CategoryID, CategoryName,[Description]
+FROM Categories
+WHERE CategoryName='เครื่องสำอาง';
 -- 11.คำนำหน้า ชื่อ นามสกุล ของพนักงานที่เป็น Sale Representative
 SELECT Title, FirstName, LastName
 FROM Employees
-WHERE Position = 'Sale Representative';
+WHERE [Position] = 'Sale Representative';
 -- 12. รหัสพนักงาน ชื่อพนักงาน ชื่อผู้ใช้ รหัสผ่าน ของพนักงานทุกคน
-SELECT EmployeeID, FirstName, UserName, Password
+SELECT EmployeeID,Title+ FirstName+space(1)+LastName, [Password]
 FROM Employees;
 -- 13. ชื่อผู้ใช้ และรหัสผ่านของพนักงานที่ชื่อก้องนิรันดร์
 SELECT UserName, Password
