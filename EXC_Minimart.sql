@@ -33,10 +33,9 @@ SELECT ProductID, ProductName, UnitPrice, UnitsInStock
 FROM Products
 WHERE ProductName IN ('แชมพู', 'แป้งเด็ก', 'ดินสอ', 'ยางลบ');
 -- 9. รายละเอียดของสินค้าประเภทเครื่องเขียน
-SELECT P.*
-FROM Products AS P
-JOIN Categories AS C ON P.CategoryID = C.CategoryID
-WHERE C.CategoryName = 'เครื่องเขียน';
+SELECT productID, ProductName,UnitPrice,UnitsInStock,CategoryID,Discontinued
+FROM Products
+WHERE CategoryID = 1;
 -- 10. รหัสประเภทสินค้า ชื่อประเภท และรายละเอียดของ สินค้าประเภทเครื่องสำอาง
 SELECT CategoryID, CategoryName, Description
 FROM Categories
@@ -53,5 +52,10 @@ SELECT UserName, Password
 FROM Employees
 WHERE FirstName = 'ก้องนิรันตร์';
 -- 14. รหัสพนักงานที่ออกใบเสร็จหมายเลข 3
-
+SELECT EmployeeID
+FROM Receipts
+WHERE ReceiptID = 3;
 -- 15. รหัสสินค้า ชื่อสินค้า ราคา ของสินค้าที่มีรหัสประเภท 2, 4
+SELECT ProductID, ProductName, UnitPrice
+FROM Products
+WHERE CategoryID IN (2, 4);
