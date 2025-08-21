@@ -33,3 +33,16 @@ FROM Orders JOIN Shippers
 ON Shippers.ShipperID=Orders.Shipvia
 WHERE OrderID=10275
 
+select p.ProductID,p.ProductName,s.CompanyName,s.Country
+from Products p join Suppliers s on p.SupplierID = p.SupplierID
+where Country in ('usa','uk')
+
+select e.EmployeeID,FirstName,
+from Employees e join Orders o on e.EmployeeID=e.EmployeeID
+order by EmployeeID
+
+SELECT O.OrderID เลขใบสั่งซื้อ, C.CompanyName ลูกค้า,
+E.FirstName พนักงาน, O.ShipAddress ส่งไปที่
+FROM Orders O
+join Customers C on O.CustomerID=C.CustomerID
+join Employees E on O.EmployeeID=E.EmployeeID
