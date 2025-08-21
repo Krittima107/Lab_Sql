@@ -74,3 +74,16 @@ from Customers c join Orders o on c.CustomerID=o.CustomerID
 				 join Products p on p.ProductID=od.ProductID
 				 join Suppliers s on s.SupplierID=p.SupplierID
 where c.CompanyName ='Around the Horn'
+--ต้องการชื่อบริษัทลูกค้าชื่อ Around the Horn ซื้อสินค้าอะไรบ้าง จำนวนเท่าใด
+select p.ProductID,p.ProductName,sum(Quantity)จำนวนที่ซื้อ
+from Customers c join Orders o on c.CustomerID=o.CustomerID
+				 join [Order Details] od on o.OrderID=od.OrderID
+				 join Products p on p.ProductID=od.ProductID
+where c.CompanyName ='Around the Horn'
+group by p.ProductID,p.ProductName
+--ต้องการหมายเลขใบสั่งซื้อ ชื่อพนักงาน และยอดขายในใบสั่งซื้อนั้น
+select o.OrderID,FirstName,
+sum(od.Quantity*od.UnitPrice*(1-Discount)) Totalcash
+from Orders o join Employees e on o.EmployeeID=e.EmployeeID
+			  join [Order Details]od on o.OrderID=od.OrderID
+group by o.OrderID,FirstName
