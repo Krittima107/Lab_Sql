@@ -1,5 +1,5 @@
 ﻿--1 แสดงชื่อประเภทสินค้า ชื่อสินค้า และ ราคาสินค้า
---CARTESIAN PRODUCT เชื่อมโยงที่ค าสั่ง WHERE
+--CARTESIAN PRODUCT เชื่อมโยงที่คำสั่ง WHERE
 Select CategoryName, ProductName, UnitPrice
 From Products as P, Categories as C
 where P.CategoryID=C.CategoryID
@@ -67,3 +67,10 @@ from Employees e join Orders o on e.EmployeeID=o.EmployeeID
 				 join Products p on p.ProductID=od.ProductID
 where e.FirstName ='Nancy'
 order by ProductID
+--ต้องการชื่อบริษัทลูกค้าชื่อ Around the Horn ซื้อสินค้าที่มาจากประเทศอะไรบ้าง
+select distinct s.Country
+from Customers c join Orders o on c.CustomerID=o.CustomerID
+				 join [Order Details] od on o.OrderID=od.OrderID
+				 join Products p on p.ProductID=od.ProductID
+				 join Suppliers s on s.SupplierID=p.SupplierID
+where c.CompanyName ='Around the Horn'
