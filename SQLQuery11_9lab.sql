@@ -36,3 +36,58 @@ select ROW_NUMBER() over (order by unitprice desc) as rownum, ProductName,UnitPr
 from Products
 where UnitPrice < 50
 
+--คำสั่ง DML(Insert Update Delete)
+select* from Shippers
+----------คำสั่ง Insert เพิ่มข้อมูล
+--ตาราง มี PK เป็น AutoInsement (AutoNumber)
+insert into Shippers
+values('บริษัทขนเยอะจำกัด','081-12345678')
+
+insert into Shippers(CompanyName)
+values('บริษัทขนมหาศาลจำกัด')
+
+select*from Customers
+--ตารางที่มี PK เป็น char nchar
+insert into Customers(CustomerID,CompanyName)
+values ('A0001','บริษัทชื่อเยอะจำกัด')
+--จงเพิ่มข้อมูลพนักงาน 1 คน (ใส่ข้อมูลเท่าที่มี)
+insert into Employees (FirstName,LastName)
+values ('วุ้นเส้น','เขมรสกุล')
+
+select * from Employees
+--จงเพิ่มสินค้า ปลาแดกบอง ราคา 1.5$ จำนวน 12
+insert into Products(ProductName,UnitPrice,UnitsInStock)
+values ('ปลาแดกบอง',1.5,12)
+
+select * from Products
+--คำสั่ง Update ปรับปรุงข้อมูล
+--ปรับปรุงเบอร์โทรศัพท์ ของบริษัทขนส่ง รหัส 6
+update Shippers
+set Phone = '085-99998989'
+where ShipperID = 5
+
+select * from Shippers
+--ปรับปรุงจำนวนสินค้าคงเหลือสิค้ารหัส 1 เพิ่มจำนวนเข้าไป 100 ชิ้น
+update Products
+set UnitsInStock = UnitsInStock + 100
+where ProductID = 1
+
+select * from Products
+--ปรับปรุง เมือง และประเทศลูกค้า รหัส A0001 ให้เป็นอุดรธานีม Thailand
+update Customers
+set City = 'อุดรธานี', Country = 'Thailand'
+where CustomerID = 'A0001'
+
+select * from Customers
+--ลบข้อมูลสินค้าที่มีรหัสหมายเลข 78
+DELETE FROM Products
+WHERE ProductID = 78;
+
+select * from Products
+
+----------คำสั่ง Delete ลบข้อมูล
+--ลบบริษัทขนส่งสินค้า รหัส 6
+delete from Shippers
+where ShipperID = 6
+
+select * from Orders
