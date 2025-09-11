@@ -91,3 +91,8 @@ delete from Shippers
 where ShipperID = 6
 
 select * from Orders
+--ต้องการข้อมูล รหัสและชื่อพนักงาน และรหัสและชื่อหัวหน้าพนักงาน
+select emp.EmployeeID,emp.FirstName ชื่อพนักงาน,
+		boss.EmployeeID,boss.FirstName ชื่อหัวหน้า
+from Employees emp join Employees boss
+on emp.ReportsTo = boss.EmployeeID
